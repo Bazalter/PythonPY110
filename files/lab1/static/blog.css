@@ -1,0 +1,90 @@
+/* Стили для заголовка и навигации в хедере */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Стили для статей в основной части */
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
+article {
+    width: 30%;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+}
+
+article h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+article p {
+    margin: 10px 0;
+}
+
+/* Стили для сайдбара */
+aside {
+    width: 30%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+aside h3 {
+    font-size: 20px;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin-bottom: 10px;
+}
+
+/* Стили для футера */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Оформление ссылок */
+a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
