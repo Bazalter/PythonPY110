@@ -1,0 +1,505 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Корзина</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+
+    <link type="image/x-icon" href="{% static 'store/images/favicon.png' %}" rel="shortcut icon">
+	<link rel="stylesheet" href="{% static 'store/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'store/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'store/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'store/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'store/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'store/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+  </head>
+  <body class="goto-here">
+  	<div class="py-1 bg-primary">
+		<div class="container">
+    		<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+	    		<div class="col-lg-12 d-block">
+		    		<div class="row d-flex">
+		    			<div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+						    <span class="text">+ 7 (812) 123 45 678</span>
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+						    <span class="text">mystore@email.ru</span>
+					    </div>
+					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+						    <span class="text">Доставка в течении 3-5 рабочих дней. Бесплатный возврат</span>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+		  </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="#">Vegefoods</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Навигация
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="shop.html" class="nav-link">Магазин</a>
+			  <li class="nav-item"><a href="wishlist.html" class="nav-link">Избранное</a>
+			  <li class="nav-item"><a href="cart.html" class="nav-link">Корзина</a>
+			  <li class="nav-item"><a href="login.html" class="nav-link">Войти в аккаунт</a>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'store/images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"></span></p>
+            <h1 class="mb-0 bread">Корзина</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-cart">
+			<div class="container">
+				<div class="row">
+    			<div class="col-md-12 ftco-animate">
+    				<div class="cart-list">
+	    				<table class="table">
+						    <thead class="thead-primary">
+						      <tr class="text-center">
+						        <th>&nbsp;</th>
+						        <th>&nbsp;</th>
+						        <th>Продукт</th>
+						        <th>Цена, &#x20bd</th>
+						        <th>Количество товара</th>
+						        <th>Общая цена, &#x20bd</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        
+						        <td class="image-prod"><div class="img" style="background-image:url({% static 'store/images/product-1.jpg' %});"></div></td>
+						        
+						        <td class="product-name">
+						        	<h3>Болгарский перец</h3>
+						        	<p>Сочный и яркий, он добавит красок и вкуса в ваши блюда.</p>
+						        </td>
+						        
+						        <td class="price">210.00</td>
+						        
+						        <td class="quantity">
+						        	<div class="input-group mb-3">
+					             	<input type="number" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+					          	</div>
+					          </td>
+						        
+						        <td class="total">210.00</td>
+						      </tr><!-- END TR-->
+
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        
+						        <td class="image-prod"><div class="img" style="background-image:url({% static 'store/images/product-2.jpg' %});"></div></td>
+						        
+						        <td class="product-name">
+						        	<h3>Клубника</h3>
+						        	<p>Сладкая и ароматная клубника, полная витаминов, чтобы сделать ваш день ярче.</p>
+						        </td>
+						        
+						        <td class="price">500.00</td>
+						        
+						        <td class="quantity">
+						        	<div class="input-group mb-3">
+					             	<input type="number" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+					          	</div>
+					          </td>
+						        
+						        <td class="total">500.00</td>
+						      </tr><!-- END TR-->
+						    </tbody>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
+    		<div class="row justify-content-end">
+    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+    				<div class="cart-total mb-3">
+    					<h3>Промокод</h3>
+    					<p>Введите код купона, если он у вас есть</p>
+  						<form action="#" class="info">
+						  <div class="form-group">
+							<input type="text" id='promo-input' class="form-control text-left px-3" placeholder="Промокод">
+						  </div>
+						</form>
+    				</div>
+    				<p><button id="checkCoupon" class="btn btn-primary py-3 px-4">Применить промокод</button></p>
+					<div id="couponResult"></div>
+    			</div>
+    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+    				<div class="cart-total mb-3">
+    					<h3>Расчёт доставки</h3>
+    					<p>Введите ваш город доставки</p>
+  						<form action="#" class="info">
+						  <div class="form-group">
+							<label>Страна</label>
+							<input type="text" id='delivery-country' class="form-control text-left px-3" placeholder="Россия" required>
+						  </div>
+						  <div class="form-group">
+							<label>Город/Населенный пункт</label>
+							<input type="text" id='delivery-city' class="form-control text-left px-3" placeholder="Санкт-Петербург" required>
+						  </div>
+						  <div class="form-group">
+							<label>Почтовый код</label>
+							<input type="text" id='delivery-post-code' class="form-control text-left px-3" placeholder="195251" required>
+						  </div>
+
+						</form>
+    				</div>
+						<p><button id="estimateDelivery" class="btn btn-primary py-3 px-4">Рассчитать</button></p>
+						<div id="estimateResult"></div>
+    			</div>
+    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+    				<div class="cart-total mb-3">
+    					<h3>Стоимость покупку</h3>
+    					<p class="d-flex">
+    						<span>Промежуточный итог</span>
+    						&#x20bd  <span id="subtotal-value">710.00</span>
+    					</p>
+    					<p class="d-flex">
+    						<span>Доставка</span>
+    						&#x20bd <span id="delivery-value">0.00</span>
+    					</p>
+    					<p class="d-flex">
+    						<span>Скидки</span>
+    						&#x20bd <span id="discount-value">0.00</span>
+    					</p>
+    					<hr>
+    					<p class="d-flex total-price">
+    						<span>Итог</span>
+    						<b style="color: black">&#x20bd</b> <span id="total-value">710.00</span>
+    					</p>
+    				</div>
+    				<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Оплатить</a></p>
+    			</div>
+    		</div>
+			</div>
+		</section>
+
+		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+      <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+          <div class="col-md-6">
+          	<h2 style="font-size: 22px;" class="mb-0">Подпишись на новости</h2>
+          	<span>Получайте по электронной почте обновления о наших последних магазинах и специальных предложениях</span>
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+            <form action="#" class="subscribe-form">
+              <div class="form-group d-flex">
+                <input type="text" class="form-control" placeholder="Введите ваш email">
+                <input type="submit" value="Подписаться" class="submit px-3">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+      	<div class="row">
+      		<div class="mouse">
+						<a href="#" class="mouse-icon">
+							<div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+						</a>
+					</div>
+      	</div>
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Vegefoods</h2>
+              <p><i>Зеленый выбор для здоровой жизни!</i></p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-telegram"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-vk"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-whatsapp"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Навигация</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Магазин</a></li>
+                <li><a href="#" class="py-2 d-block">О нас</a></li>
+                <li><a href="#" class="py-2 d-block">Блог</a></li>
+                <li><a href="#" class="py-2 d-block">Связаться с нами</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Помощь</h2>
+              <div class="d-flex">
+	              <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+	                <li><a href="#" class="py-2 d-block">Информация о доставке</a></li>
+	                <li><a href="#" class="py-2 d-block">Возврат и Обмен</a></li>
+	                <li><a href="#" class="py-2 d-block">Условия и Положения</a></li>
+	                <li><a href="#" class="py-2 d-block">Политика конфиденциальности</a></li>
+	              </ul>
+	              <ul class="list-unstyled">
+	                <li><a href="#" class="py-2 d-block">Вопрос - ответ</a></li>
+	                <li><a href="#" class="py-2 d-block">Контакты</a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Остались вопросы?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Россия, г. Санкт-Петербург, ул. Ответов на вопросы, д.1</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+ 7 (812) 123 45 678</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.ru</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						  Авторские права &copy;<script>document.write(new Date().getFullYear());</script> Все права защищены | Этот шаблон сделан с <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+  	<!-- loader -->
+  	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  	<script src="{% static 'store/js/jquery.min.js' %}"></script>
+  	<script src="{% static 'store/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  	<script src="{% static 'store/js/popper.min.js' %}"></script>
+  	<script src="{% static 'store/js/bootstrap.min.js' %}"></script>
+  	<script src="{% static 'store/js/jquery.easing.1.3.js' %}"></script>
+  	<script src="{% static 'store/js/jquery.waypoints.min.js' %}"></script>
+  	<script src="{% static 'store/js/jquery.stellar.min.js' %}"></script>
+  	<script src="{% static 'store/js/owl.carousel.min.js' %}"></script>
+  	<script src="{% static 'store/js/jquery.magnific-popup.min.js' %}"></script>
+  	<script src="{% static 'store/js/aos.js' %}"></script>
+  	<script src="{% static 'store/js/jquery.animateNumber.min.js' %}"></script>
+  	<script src="{% static 'store/js/bootstrap-datepicker.js' %}"></script>
+  	<script src="{% static 'store/js/scrollax.min.js' %}"></script>
+  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  	<script src="{% static 'store/js/google-map.js' %}"></script>
+  	<script src="{% static 'store/js/main.js' %}"></script>
+
+	<script>
+		// Получаем элементы с значениями
+		let subtotalElement = document.getElementById('subtotal-value');
+		let deliveryElement = document.getElementById('delivery-value');
+		let discountElement = document.getElementById('discount-value');
+		let totalElement = document.getElementById('total-value');
+
+		// Функция для обновления итога
+		function updateTotal() {
+			// Получаем значения промежуточного итога, доставки и скидок из элементов
+			let subtotal = parseFloat(subtotalElement.textContent);
+			let delivery = parseFloat(deliveryElement.textContent);
+			let discount = parseFloat(discountElement.textContent);
+
+			// Вычисляем итог
+			let total = subtotal + delivery - discount;
+
+			// Убеждаемся, что итог не становится отрицательным
+			if (total < 0) {
+				total = 0;
+			}
+
+			// Обновляем элемент с итогом
+			totalElement.textContent = total.toFixed(2);
+		}
+
+		// Вызываем функцию для первичного расчета итога
+		updateTotal();
+	</script>
+
+	<script>
+		// Получаем все элементы с классами "quantity" и "total"
+		let quantityInputs = document.querySelectorAll('.quantity input');
+		let totalElements = document.querySelectorAll('.total');
+		let priceElements = document.querySelectorAll('.price');
+		// Функция для обновления промежуточного итога
+		function updateSubtotal() {
+			// Инициализируем переменные для промежуточного итога и цены товара
+			let subtotal = 0;
+
+			// Проходимся по всем элементам с классом "quantity"
+			quantityInputs.forEach(function(input, index) {
+				// Получаем значение количества товара
+				let quantity = parseInt(input.value, 10);
+
+				// Получаем цену товара из HTML (хотя обычно идёт запрос на сервер)
+				let price = parseFloat(priceElements[index].textContent);
+
+				// Рассчитываем общую цену для данной позиции
+				let itemTotal = quantity * price;
+
+				// Обновляем элемент с классом "total" для данной позиции
+				totalElements[index].textContent = itemTotal.toFixed(2);
+
+				// Добавляем общую цену данной позиции к общему промежуточному итогу
+				subtotal += itemTotal;
+			});
+
+			// Обновляем элемент с итогом
+			document.getElementById('subtotal-value').textContent = subtotal.toFixed(2); // Форматируем итог в нужный вид
+
+			updateTotal(); // Вызываем пересчёт корзины
+			// document.querySelector('.total-price span:last-child').textContent = '₽ ' + subtotal.toFixed(2); // Форматируем итог в нужный вид
+		}
+
+		// Слушаем событие изменения ввода количества товара
+		quantityInputs.forEach(function(input) {
+			input.addEventListener('change', updateSubtotal);
+		});
+
+		// Вызываем функцию для первичного расчета итога
+		updateSubtotal();
+		</script>
+
+	<script>
+		// Проверка действия купона
+
+		let promoElement = document.getElementById('promo-input');
+		let checkCouponButton = document.getElementById('checkCoupon');
+		let subtotal_with_discount = 0;
+		// Функция для проверки действия купона
+		function checkCoupon() {
+			// Получаем значение купона, которое вы хотите проверить
+			let couponCode = promoElement.value;
+
+			console.log(couponCode);
+
+			// Делаем кнопку неактивной, чтобы предотвратить повторные запросы
+    		checkCouponButton.disabled = true;
+
+			// Отправляем асинхронный GET-запрос на сервер для проверки купона
+			fetch('/coupon/check/' + couponCode, {
+				method: 'GET'
+			})
+			.then(function(response) {
+				// Проверяем статус ответа
+				if (!response.ok) {
+					throw new Error('Ошибка при проверке купона');
+				}
+				return response.json();
+			})
+			.then(function(data) {
+				// Обрабатываем данные, которые пришли с сервера
+				if (data.is_valid) {
+					document.getElementById('couponResult').textContent = 'Купон действителен! Размер скидки: ' + data.discount + '%';
+					subtotal_with_discount = parseFloat(subtotalElement.textContent) * 0.01 * data.discount;
+					discountElement.textContent = subtotal_with_discount.toFixed(2);
+					updateTotal();
+				} else {
+					document.getElementById('couponResult').textContent = 'Купон не действителен!';
+				}
+			})
+			.catch(function(error) {
+				// Обрабатываем ошибку
+				console.error(error);
+				document.getElementById('couponResult').textContent = 'Произошла ошибка при проверке купона';
+			})
+			.finally(function() {
+				// Включаем кнопку обратно после получения ответа (успешного или с ошибкой)
+				checkCouponButton.disabled = false;
+			});
+		};
+
+		checkCouponButton.addEventListener('click', checkCoupon);
+	</script>
+
+  	<script>
+		// Расчёт стоимости доставки
+
+		let deliveryCountry = document.getElementById('delivery-country');
+		let deliveryCity = document.getElementById('delivery-city');
+		let deliveryCode = document.getElementById('delivery-post-code');
+		let estimateButton = document.getElementById('estimateDelivery');
+		// let deliveryElement = document.getElementById('delivery-value');
+		// Функция для расчёта стоимости доставки
+		function estimateDelivery() {
+			// Получаем значение купона, которое вы хотите проверить
+			let country = deliveryCountry.value;
+			let city = deliveryCity.value;
+			let code = deliveryCode.value;
+
+			console.log(country, city, code);
+
+			// Делаем кнопку неактивной, чтобы предотвратить повторные запросы
+    		estimateButton.disabled = true;
+
+			// Отправляем асинхронный GET-запрос на сервер для расчёта стоимости доставки
+			fetch('/delivery/estimate?country=' + country + '&city=' + city + '&code=' + code, {
+				method: 'GET'
+			})
+			.then(function(response) {
+				// Проверяем статус ответа
+				if (!response.ok) {
+					throw new Error('Ошибка при проверке купона');
+				}
+				return response.json();
+			})
+			.then(function(data) {
+				// Обрабатываем данные, которые пришли с сервера
+				deliveryElement.textContent = data.price.toFixed(2);
+				document.getElementById('estimateResult').textContent = 'Доставка рассчитана и внесена в стоимость заказа';
+				updateTotal();
+			})
+			.catch(function(error) {
+				// Обрабатываем ошибку
+				console.error(error);
+				document.getElementById('estimateResult').textContent = 'Сюда, к сожалению, не доставляем';
+			})
+			.finally(function() {
+				// Включаем кнопку обратно после получения ответа (успешного или с ошибкой)
+				estimateButton.disabled = false;
+			});
+		};
+
+		estimateButton.addEventListener('click', estimateDelivery);
+	</script>
+
+  </body>
+</html>
