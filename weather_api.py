@@ -48,4 +48,4 @@ def current_weather(lat, lon):
 
 
 if __name__ == "__main__":
-    print(current_weather(59.93, 30.31))  # Проверка работы для координат Санкт-Петербурга
+    print(current_weather(59.941819, 31.034363))  # Проверка работы для координат Санкт-Петербурга
