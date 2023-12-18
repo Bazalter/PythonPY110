@@ -57,9 +57,13 @@ def add_to_cart(id_product: str) -> bool:
 
     # TODO Проверьте, а существует ли такой товар в корзине, если нет, то перед тем как его добавить - проверьте есть ли такой
     # id товара в вашей базе данных DATABASE, чтобы уберечь себя от добавления несуществующего товара.
-    if id_product in DATABASE:
-        if cart["products"][id_product] :
+    if id_product not in DATABASE:
+        return False
 
+    if cart["products"].get(id_product) is None:
+        cart["products"][id_product] = 1
+
+    elif cart["products"].get(id_product) is not None:
         cart["products"][id_product] += 1
 
 
@@ -80,15 +84,17 @@ def remove_from_cart(id_product: str) -> bool:
     :return: Возвращает True в случае успешного удаления, а False в случае неуспешного удаления(товара по id_product
     не существует).
     """
-    cart = ...  # TODO Помните, что у вас есть уже реализация просмотра корзины,
+    cart = view_in_cart() # TODO Помните, что у вас есть уже реализация просмотра корзины,
     # поэтому, чтобы загрузить данные из корзины, не нужно заново писать код.
 
     # TODO Проверьте, а существует ли такой товар в корзине, если нет, то возвращаем False.
-
+    if cart["products"].get(id_product) is None:
+        return False
     # TODO Если существует товар, то удаляем ключ 'id_product' у cart['products'].
-
+    cart["products"].pop(id_product)
     # TODO Не забываем записать обновленные данные cart в 'cart.json'
-
+    with open('cart.json', mode='w', encoding='utf-8') as f:
+        json.dump(cart, f)
     return True
 
 
@@ -107,24 +113,24 @@ if __name__ == "__main__":
 
     # Предыдущий код, что был для проверки filtering_category закомментируйте
 
-if __name__ == "__main__":
-    from store.models import DATABASE
-
-    test = [
-        {'name': 'Клубника', 'discount': None, 'price_before': 500.0,
-         'price_after': 500.0,
-         'description': 'Сладкая и ароматная клубника, полная витаминов, чтобы сделать ваш день ярче.',
-         'rating': 5.0, 'review': 200, 'sold_value': 700,
-         'weight_in_stock': 400,
-         'category': 'Фрукты', 'id': 2, 'url': 'store/images/product-2.jpg',
-         'html': 'strawberry'},
-
-        {'name': 'Яблоки', 'discount': None, 'price_before': 130.0,
-         'price_after': 130.0,
-         'description': 'Сочные и сладкие яблоки - идеальная закуска для здорового перекуса.',
-         'rating': 4.7, 'review': 30, 'sold_value': 70, 'weight_in_stock': 200,
-         'category': 'Фрукты', 'id': 10, 'url': 'store/images/product-10.jpg',
-         'html': 'apple'}
-    ]
-
-    print(filtering_category(DATABASE, 'Фрукты', 'price_after', True) == test)  # True
+# if __name__ == "__main__":
+#     from store.models import DATABASE
+#
+#     test = [
+#         {'name': 'Клубника', 'discount': None, 'price_before': 500.0,
+#          'price_after': 500.0,
+#          'description': 'Сладкая и ароматная клубника, полная витаминов, чтобы сделать ваш день ярче.',
+#          'rating': 5.0, 'review': 200, 'sold_value': 700,
+#          'weight_in_stock': 400,
+#          'category': 'Фрукты', 'id': 2, 'url': 'store/images/product-2.jpg',
+#          'html': 'strawberry'},
+#
+#         {'name': 'Яблоки', 'discount': None, 'price_before': 130.0,
+#          'price_after': 130.0,
+#          'description': 'Сочные и сладкие яблоки - идеальная закуска для здорового перекуса.',
+#          'rating': 4.7, 'review': 30, 'sold_value': 70, 'weight_in_stock': 200,
+#          'category': 'Фрукты', 'id': 10, 'url': 'store/images/product-10.jpg',
+#          'html': 'apple'}
+#     ]
+#
+#     print(filtering_category(DATABASE, 'Фрукты', 'price_after', True) == test)  # True
