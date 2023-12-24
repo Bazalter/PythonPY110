@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="hero-wrap hero-bread" style="background-image: url({%  static 'store/images/bg_1.jpg' %}' %});">
+<div class="hero-wrap hero-bread" style="background-image: url({%  static 'store/images/bg_1.jpg' %});">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
@@ -22,11 +22,35 @@
     		<div class="row justify-content-center">
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
-    					<li><a href="#" class="active">Все</a></li>
-    					<li><a href="#">Овощи</a></li>
-    					<li><a href="#">Фрукты</a></li>
-    					<li><a href="#">Соки</a></li>
-    					<li><a href="#">Семена</a></li>
+						{% if category is None %}
+    					<li><a href="{% url 'store:shop_view' %}" class="active">Все</a></li>
+						{% else %}
+						<li><a href="{% url 'store:shop_view' %}">Все</a></li>
+						{% endif %}
+
+    					{% if category == 'Овощи' %}
+						<li><a href="{% url 'store:shop_view' %}?category={{category}}" class="active">Овощи</a></li>
+						{% else %}
+						<li><a href="{% url 'store:shop_view' %}?category=Овощи">Овощи</a></li>
+						{% endif %}
+
+						{% if category == 'Фрукты' %}
+						<li><a href="{% url 'store:shop_view' %}?category={{category}}" class="active">Фрукты</a></li>
+						{% else %}
+						<li><a href="{% url 'store:shop_view' %}?category=Фрукты">Фрукты</a></li>
+						{% endif %}
+
+						{% if category == 'Соки' %}
+						<li><a href="{% url 'store:shop_view' %}?category={{category}}" class="active">Соки</a></li>
+						{% else %}
+						<li><a href="{% url 'store:shop_view' %}?category=Соки">Соки</a></li>
+						{% endif %}
+
+						{% if category == 'Семена' %}
+						<li><a href="{% url 'store:shop_view' %}?category={{category}}" class="active">Семена</a></li>
+						{% else %}
+						<li><a href="{% url 'store:shop_view' %}?category=Семена">Семена</a></li>
+						{% endif %}
     				</ul>
     			</div>
     		</div>

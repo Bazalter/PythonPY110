@@ -18,38 +18,44 @@ def products_view(request):
         category_key = request.GET.get("category")  # Считали 'category'
         if ordering_key := request.GET.get("ordering"):  # Если в параметрах есть 'ordering'
             if request.GET.get("reverse") in ('true', 'True'):  # Если в параметрах есть 'ordering' и 'reverse'=True
-                data = filtering_category(DATABASE, category_key, ordering_key, True)  # TODO Провести фильтрацию с параметрами
+                data = filtering_category(DATABASE, category_key, ordering_key, True)
             else:
-                data = filtering_category(DATABASE, category_key, ordering_key)  # TODO Провести фильтрацию с параметрами
+                data = filtering_category(DATABASE, category_key, ordering_key)
         else:
-            data = filtering_category(DATABASE, category_key)  # TODO Провести фильтрацию с параметрами
+            data = filtering_category(DATABASE, category_key)
         # В этот раз добавляем параметр safe=False, для корректного отображения списка в JSON
         return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False,
                                                                  'indent': 4})
 
 def shop_view(request):
     if request.method == "GET":
+        category_key = request.GET.get("category")  # Считали 'category'
+        if ordering_key := request.GET.get("ordering"):  # Если в параметрах есть 'ordering'
+            if request.GET.get("reverse") in ('true', 'True'):  # Если в параметрах есть 'ordering' и 'reverse'=True
+                data = filtering_category(DATABASE, category_key, ordering_key, True)
+            else:
+                data = filtering_category(DATABASE, category_key, ordering_key)
+        else:
+            data = filtering_category(DATABASE, category_key)
         return render(request,
                       'store/shop.html',
-                      context={"products": DATABASE.values()})
+                      context={"products": data,
+                               "category": category_key})
 
 
 def products_page_view(request, page):
     if request.method == "GET":
         if isinstance(page, str):
             for data in DATABASE.values():
-                if data['html'] == page:  # Если значение переданного параметра совпадает именем html файла
-                    with open(f'store/products/{page}.html', encoding='utf-8') as f:
-                        return HttpResponse(f.read())
+                if data['html'] == page:
+                    return render(request, "store/product.html", context={"product": data})
+
         elif isinstance(page, int):
+            # Обрабатываем условие того, что пытаемся получить страницу товара по его id
             data = DATABASE.get(str(page))  # Получаем какой странице соответствует данный id
-            if data:  # Если по данному page было найдено значение
-                with open(f'store/products/{data["html"]}.html', encoding='utf-8') as f:
-                    return HttpResponse(f.read())
+            if data:
+                return render(request, "store/product.html", context={"product": data})
 
-
-        # Если за всё время поиска не было совпадений, то значит по данному имени нет соответствующей
-        # страницы товара и можно вернуть ответ с ошибкой HttpResponse(status=404)
         return HttpResponse(status=404)
 
 def cart_view(request):
