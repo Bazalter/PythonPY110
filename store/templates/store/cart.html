@@ -36,7 +36,7 @@
 						    <tbody>
 							{% for product in products %}
 						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        <td class="product-remove"><a href="{% url 'store:remove_now' product.id %}"><span class="ion-ios-close"></span></a></td>
 						        
 						        <td class="image-prod"><div class="img" style="background-image:url({% static product.url %});"></div></td>
 						        
@@ -125,7 +125,7 @@
     		</div>
 			</div>
 		</section>
-{% block content %}
+{% endblock %}
 
 {% block custom_scripts %}
 	<script>
@@ -304,4 +304,4 @@
 
 		estimateButton.addEventListener('click', estimateDelivery);
 	</script>
-{% end block %}
+{% endblock %}

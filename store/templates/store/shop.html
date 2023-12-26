@@ -82,17 +82,17 @@
 	    					</div>
 	    					<div class="bottom-area d-flex px-3">
 	    						<div class="m-auto d-flex">
-	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center" data-product-id="1">
-	    								<span><i class="ion-ios-add-circle-outline" data-product-id="1"></i></span>
+	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center" data-product-id="{{product.id}}">
+	    								<span><i class="ion-ios-add-circle-outline" data-product-id="{{product.id}}"></i></span>
 	    							</a>
-	    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+	    							<a href="{% url 'store:buy_now' product.id %}" class="buy-now d-flex justify-content-center align-items-center mx-1">
 	    								<span><i class="ion-ios-cart"></i></span>
 	    							</a>
 	    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-	    								<span><i class="ion-ios-heart-empty" data-product-id="1" data-state="inactive" data-action="toggle"></i></span>
+	    								<span><i class="ion-ios-heart-empty" data-product-id="{{product.id}}" data-state="inactive" data-action="toggle"></i></span>
 	    							</a>
     							</div>
-								<div class="custom-popup-message" data-product-id="1"></div>
+								<div class="custom-popup-message" data-product-id="{{product.id}}"></div>
     						</div>
     					</div>
     				</div>
@@ -117,4 +117,71 @@
     	</div>
     </section>
 {% endblock%}
+
+{% block custom_scripts %}
+<script>
+	// Функция для показа всплывающего сообщения
+
+	function showPopupMessage(productID, message) {
+    let popupMessage = document.querySelector(`.custom-popup-message[data-product-id="${productID}"]`);
+    popupMessage.textContent = message;
+    popupMessage.style.display = 'block';
+    setTimeout(function() {
+        popupMessage.style.opacity = 1;
+    }, 10);
+    setTimeout(function() {
+        popupMessage.style.opacity = 0;
+        setTimeout(function() {
+            popupMessage.style.display = 'none';
+        }, 250); // Исчезнет через 0.25 секунды
+    }, 750); // Показывается в течение 0.75 секунд
+}
+</script>
+
+<script>
+	// Добавление продукта в корзину
+	function addToCart(event) {
+		// Получаем значение купона, которое вы хотите проверить
+		event.preventDefault();
+		let linkCart = event.target; // Получаем элемент ссылки, на которой был клик
+		// console.log(linkCart)
+    	let productId = linkCart.getAttribute('data-product-id'); // Получаем ID товара
+		console.log(productId)
+		linkCart.disabled = true;
+
+		// Отправляем асинхронный GET-запрос на сервер для проверки купона
+		fetch('/cart/add/' + productId, {
+			method: 'GET'
+		})
+		.then(function(response) {
+			// Проверяем статус ответа
+			if (!response.ok) {
+				throw new Error('Ошибка при при добавлении в корзину');
+			}
+			return response.json();
+		})
+		.then(function(data) {
+			// Обрабатываем данные, которые пришли с сервера
+
+			if (data.answer = 'Продукт успешно добавлен в корзину') {
+				showPopupMessage(productId, 'Продукт успешно добавлен в корзину');
+			}
+		})
+		.catch(function(error) {
+			// Обрабатываем ошибку
+			console.error(error);
+		})
+		.finally(function() {
+			// Включаем ссылку обратно после получения ответа (успешного или с ошибкой)
+			linkCart.disabled = false;
+		});
+
+	};
+	let addButtons = document.querySelectorAll('.add-to-cart');
+	addButtons.forEach(function(button) {
+		button.addEventListener('click', addToCart);
+	});
+
+</script>
+{% endblock %}
 
