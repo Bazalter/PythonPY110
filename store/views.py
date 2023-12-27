@@ -6,6 +6,7 @@ from logic.services import filtering_category
 from logic.services import view_in_cart, add_to_cart, remove_from_cart
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user
 
 def products_view(request):
     if request.method == 'GET':
@@ -49,7 +50,11 @@ def products_page_view(request, page):
         if isinstance(page, str):
             for data in DATABASE.values():
                 if data['html'] == page:
-                    return render(request, "store/product.html", context={"product": data})
+                    data1 = filtering_category(DATABASE, data["category"])
+                    # if data1[0] == data[0]:
+
+                    return render(request, "store/product.html", context={"product": data,
+                                                                          "list_products": data1[:4]})
 
         elif isinstance(page, int):
             # Обрабатываем условие того, что пытаемся получить страницу товара по его id
@@ -117,6 +122,8 @@ def coupon_check_view(request, name_coupon):
     if request.method == "GET":
         if name_coupon in DATA_COUPON:
             data = DATA_COUPON.get(name_coupon)
+            data = {"discount":  DATA_COUPON[name_coupon]["value"],
+                    "is_valid": DATA_COUPON[name_coupon]["is_valid"]}
             return JsonResponse(data, json_dumps_params={'ensure_ascii': False,
                                                      'indent': 4})
         # TODO Проверьте, что купон есть в DATA_COUPON, если он есть, то верните JsonResponse в котором по ключу "discount"

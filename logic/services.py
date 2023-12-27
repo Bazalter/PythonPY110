@@ -78,7 +78,7 @@ def add_to_cart(request, id_product: str) -> bool:
     return True
 
 
-def remove_from_cart(rquest, id_product: str) -> bool:
+def remove_from_cart(request, id_product: str) -> bool:
     """
     Добавляет позицию продукта из корзины. Если в корзине есть такой продукт, то удаляется ключ в словаре
     с этим продуктом.
