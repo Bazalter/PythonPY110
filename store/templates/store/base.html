@@ -71,7 +71,7 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item"><a href="{% url 'store:shop_view' %}" class="nav-link">Магазин</a>
-			  <li class="nav-item"><a href="wishlist.html" class="nav-link">Избранное</a>
+			  <li class="nav-item"><a href="{% url 'wishlist:wishlist_view' %}" class="nav-link">Избранное</a>
 			  <li class="nav-item"><a href="{% url 'store:cart_view' %}" class="nav-link">Корзина</a>
 			  {% if user.is_authenticated %}
                 <li class="nav-item"><a href="{% url 'login:logout_view'%}" class="nav-link">Выйти из аккаунта</a>

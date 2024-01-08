@@ -29,11 +29,13 @@ def random_view(request):
         return HttpResponse(data)
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
-    path('random', random_view),
+    path('random/', random_view),
     path('datatime/', datetime_view),
     path('', include('app_weather.urls')),
     path('', include('store.urls')),
     path('login/', include('app_login.urls')),
+    path('', include('wishlist.urls')),
 ]
 

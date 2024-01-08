@@ -1,0 +1,220 @@
+{% extends 'store/base.html' %} <!-- Расширение не меняем, оно нормально подтянется-->
+{%load static%}
+
+{% block title %}
+    <title>Избранное</title>
+{% endblock %}
+
+{% block content %}
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'store/images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"></span></p>
+            <h1 class="mb-0 bread">Избранное</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-cart">
+			<div class="container">
+				<div class="row">
+    			<div class="col-md-12 ftco-animate">
+    				<div class="cart-list">
+	    				<table class="table">
+						    <thead class="thead-primary">
+						      <tr class="text-center">
+						        <th></th>
+						        <th></th>
+						        <th>Продукт</th>
+						        <th>Цена, &#x20bd</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+							{% for product in products %}
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        
+						        <td class="image-prod"><a href="{% url 'product_page_view' product.html %}">
+									<div class="img" style="background-image:url({% static product.url %});"></div>
+								</a></td>
+						        
+						        <td class="product-name">
+						        	<h3>{{product.name}}</h3>
+						        	<p>{{product.description}}</p>
+						        </td>
+						        {% if product.discount %}
+						        <td class="price"><del>{{product.price_before}}</del> {{product.price_after}}</td>
+								{% else %}
+								  <td class="price">{{product.price_after}}</td>
+								{% endif %}
+						      </tr><!-- END TR-->
+							{% endblock %}
+
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        
+						        <td class="image-prod"><a href="products/strawberry.html">
+									<div class="img" style="background-image:url({% static 'store/images/product-2.jpg' %});"></div>
+								</a></td>
+						        
+						        <td class="product-name">
+						        	<h3>Клубника</h3>
+						        	<p>Сладкая и ароматная клубника, полная витаминов, чтобы сделать ваш день ярче.</p>
+						        </td>
+						        
+						        <td class="price">500.00</td>
+						      </tr><!-- END TR-->
+
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        
+						        <td class="image-prod"><a href="products/green_beans.html">
+									<div class="img" style="background-image:url({% static 'store/images/product-3.jpg' %});"></div>
+								</a></td>
+						        
+						        <td class="product-name">
+						        	<h3>Стручковая фасоль</h3>
+						        	<p>Зеленая натуральность и богатство белка для вашей здоровой диеты.</p>
+						        </td>
+						        
+						        <td class="price">250.00</td>
+
+						      </tr><!-- END TR-->
+
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        
+						        <td class="image-prod"><a href="products/purple_cabbage.html">
+									<div class="img" style="background-image:url({% static 'store/images/product-4.jpg' %});"></div>
+								</a></td>
+						        
+						        <td class="product-name">
+						        	<h3>Краснокочанная капуста</h3>
+						        	<p>Удивите своих гостей экзотическим вкусом и цветом ваших блюд.</p>
+						        </td>
+						        
+						        <td class="price">90.00</td>
+						      </tr><!-- END TR-->
+
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        
+						        <td class="image-prod"><a href="products/tomatoe.html">
+									<div class="img" style="background-image:url({% static 'store/images/product-5.jpg' %});"></div>
+								</a></td>
+						        
+						        <td class="product-name">
+						        	<h3>Помидоры</h3>
+						        	<p>Свежие и сочные помидоры для идеальных салатов и соусов.</p>
+						        </td>
+						        
+						        <td class="price"><del>240.00</del> 180.00</td>
+						      </tr><!-- END TR-->
+
+						      <tr class="text-center">
+						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+						        
+						        <td class="image-prod"><a href="products/brocolli.html">
+									<div class="img" style="background-image:url({% static 'store/images/product-6.jpg' %});"></div>
+								</a></td>
+						        
+						        <td class="product-name">
+						        	<h3>Брокколи</h3>
+						        	<p>Здоровье в каждом кусочке, чтобы укрепить вашу иммунную систему.</p>
+						        </td>
+						        
+						        <td class="price">320.00</td>
+						      </tr><!-- END TR-->
+						    </tbody>
+						  </table>
+					  </div>
+    			</div>
+    		</div>
+			</div>
+		</section>
+
+		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+      <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+          <div class="col-md-6">
+          	<h2 style="font-size: 22px;" class="mb-0">Подпишись на новости</h2>
+          	<span>Получайте по электронной почте обновления о наших последних магазинах и специальных предложениях</span>
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+            <form action="#" class="subscribe-form">
+              <div class="form-group d-flex">
+                <input type="text" class="form-control" placeholder="Введите ваш email">
+                <input type="submit" value="Подписаться" class="submit px-3">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+      	<div class="row">
+      		<div class="mouse">
+						<a href="#" class="mouse-icon">
+							<div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+						</a>
+					</div>
+      	</div>
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Vegefoods</h2>
+              <p><i>Зеленый выбор для здоровой жизни!</i></p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-telegram"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-vk"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-whatsapp"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Навигация</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Магазин</a></li>
+                <li><a href="#" class="py-2 d-block">О нас</a></li>
+                <li><a href="#" class="py-2 d-block">Блог</a></li>
+                <li><a href="#" class="py-2 d-block">Связаться с нами</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Помощь</h2>
+              <div class="d-flex">
+	              <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+	                <li><a href="#" class="py-2 d-block">Информация о доставке</a></li>
+	                <li><a href="#" class="py-2 d-block">Возврат и Обмен</a></li>
+	                <li><a href="#" class="py-2 d-block">Условия и Положения</a></li>
+	                <li><a href="#" class="py-2 d-block">Политика конфиденциальности</a></li>
+	              </ul>
+	              <ul class="list-unstyled">
+	                <li><a href="#" class="py-2 d-block">Вопрос - ответ</a></li>
+	                <li><a href="#" class="py-2 d-block">Контакты</a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Остались вопросы?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Россия, г. Санкт-Петербург, ул. Ответов на вопросы, д.1</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+ 7 (812) 123 45 678</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.ru</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+{% endblock %}
