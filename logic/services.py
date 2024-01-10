@@ -135,17 +135,16 @@ def add_to_wishlist(request, id_product: str) -> bool:
         wishlist_users = view_in_wishlist(request)
         wishlist = wishlist_users[get_user(request).username]
 
+        if not get_user(request).username:
+            return False
+
         # TODO Проверьте, а существует ли такой товар в корзине, если нет, то перед тем как его добавить - проверьте есть ли такой
         # id товара в вашей базе данных DATABASE, чтобы уберечь себя от добавления несуществующего товара.
         if id_product not in DATABASE:
             return False
 
-        if wishlist["products"][int(id_product)] is None:
-            wishlist["products"][int(id_product)] = 1
-
-        elif wishlist["products"][int(id_product)] is not None:
-            wishlist["products"][int(id_product)] = 1
-
+        if id_product not in wishlist["products"]:
+            wishlist["products"].append(id_product)
 
         # TODO Не забываем записать обновленные данные cart в 'wishlist.json'
         with open('wishlist.json', mode='w', encoding='utf-8') as f:
@@ -158,7 +157,7 @@ def remove_from_wishlist(request, id_product: str) -> bool:
         wishlist = wishlist_users[get_user(request).username]
 
         # TODO Проверьте, а существует ли такой товар в корзине, если нет, то возвращаем False.
-        if wishlist["products"].get(id_product) is None:
+        if id_product not in wishlist["products"]:
             return False
         # TODO Если существует товар, то удаляем ключ 'id_product' у wishlist['products'].
         wishlist["products"].remove(id_product)

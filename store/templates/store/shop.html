@@ -156,14 +156,21 @@
 		.then(function(response) {
 			// Проверяем статус ответа
 			if (!response.ok) {
-				throw new Error('Ошибка при при добавлении в корзину');
+				throw new Error('Ошибка при добавлении в корзину');
 			}
-			return response.json();
+
+			// Проверяем наличие редиректа
+			if (response.redirected) {
+				console.log('Произошел редирект на:', response.url);
+				window.location.href = response.url; // Пример перенаправления на другую страницу
+				return; // Прерываем выполнение функции
+			}
+
+			return response.json(); // Продолжаем обработку JSON-данных
 		})
 		.then(function(data) {
 			// Обрабатываем данные, которые пришли с сервера
-
-			if (data.answer = 'Продукт успешно добавлен в корзину') {
+			if (data.answer === 'Продукт успешно добавлен в корзину') {
 				showPopupMessage(productId, 'Продукт успешно добавлен в корзину');
 			}
 		})
@@ -175,7 +182,6 @@
 			// Включаем ссылку обратно после получения ответа (успешного или с ошибкой)
 			linkCart.disabled = false;
 		});
-
 	};
 	let addButtons = document.querySelectorAll('.add-to-cart');
 	addButtons.forEach(function(button) {
